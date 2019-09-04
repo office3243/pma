@@ -1,0 +1,26 @@
+{% extends 'portal/base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Campaign {{ campaign.unique_id }}{% endblock %}
+{% block content %}
+    <br>
+    <div class="jumbotron container border">
+        <h3 class="text-black-50 font-weight-bold text-center">Add New Campaign</h3>
+        <div class="">
+            {% if campaign %}
+                <h1>Name : {{ campaign.get_display_text }}</h1>
+                <h1>Amount : {{ campaign.amount }}</h1>
+                <h1>Extra Charges : {{ campaign.extra_charges }}</h1>
+                <h1>Total Amount : {{ campaign.total_amount }}</h1>
+                <h1>Size : {{ campaign.size }}</h1>
+                <h1>Footer File : <a href="{{ campaign.get_footer_file_download_related_url }}">Download Footer File</a></h1>
+
+            {% endif %}
+        </div>
+
+    </div>
+
+{% endblock %}
+
+
+
+

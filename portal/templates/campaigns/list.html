@@ -1,0 +1,42 @@
+{% extends 'portal/base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}My Campaigns{% endblock %}
+{% block content %}
+    <br>
+    <div class="jumbotron container border">
+        <h3 class="text-black-50 font-weight-bold text-center">My Campaings</h3>
+        <br>
+        <a href="{% url "campaigns:add" %}"><button class="btn btn-default float-right">Add New Campaign</button></a>
+        <br><br><br>
+        <div class="">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th class="text-center" scope="col">Sr No</th>
+                        <th class="text-center" scope="col">Name</th>
+                        <th class="text-center" scope="col">Amount</th>
+                        <th class="text-center" scope="col">Ad File</th>
+                        <th class="text-center" scope="col">Approved</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for campaign in campaigns %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td><a href="{{ campaign.get_absolute_url }}">{{ campaign.get_display_text }}</a></td>
+                            <td>{{ campaign.amount }}</td>
+                            <td><a href="{{ campaign.get_footer_file_download_related_url }}">Download File</a></td>
+                            <td>{{ campaign.is_approved }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+{% endblock %}
+
+
+
+
