@@ -2,3 +2,9 @@
 
 {% block title %}Home{% endblock %}
 
+{% block content %}
+    <a href="{% url "campaigns:list" %}"><button class="btn btn-primary">My campaigns</button></a>
+
+    <a href="{% url "campaigns:blob_test" %}">Blob Test</a>
+
+{% endblock %}

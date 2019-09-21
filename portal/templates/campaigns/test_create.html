@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+<head>
+    <script type="text/javascript" src="{% static "js/jspdf.min.js" %}"></script>
+
+</head>
+
+<body>
+
+<form enctype="multipart/form-data" action="{% url "campaigns:test_create" %}" method="post" id="myForm">
+    {% csrf_token %}
+    <input name="myFile" type="file" id="fileInput">
+    <br>
+    <br>
+    <br>
+
+    <button type="submit">Submit</button>
+
+</form>
+    <br>
+    <br>
+
+<button id="jsSave">JS SAVE</button>
+
+
+  <script>
+
+    const form = document.getElementById("myForm");
+    let saveBtn = document.getElementById("jsSave");
+    let input = document.getElementById("fileInput");
+    var doc = new jsPDF();
+
+    doc.text("Octonyan loves jsPDF", 35, 25);
+    let fileBlob = doc.output("blob");
+
+
+    let blobFile = new File([fileBlob, ], "bl.pdf");
+
+    const data = [
+      blobFile,
+    ];
+
+    class _DataTransfer {
+      constructor() {
+        return new ClipboardEvent("").clipboardData || new DataTransfer();
+      }
+    }
+    saveBtn.onclick = e => {
+      const dt = new _DataTransfer();
+      dt.items.add(data[0]);
+      input.files = dt.files;
+     };
+
+  </script>
+</body>
+
+</html>

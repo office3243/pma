@@ -5,4 +5,5 @@ app_name = "portal"
 
 urlpatterns = [
     url(r'^$', views.HomeView.as_view(), name="home"),
+
 ]

@@ -1,4 +1,4 @@
-from localities.models import Locality, City, State
+from localities.models import Locality, City, State, SubLocality
 from industries.models import Category, SubCategory
 from campaigns.models import Entity, Size
 
@@ -13,6 +13,8 @@ state = State.objects.create(name="Maharashtra", short_name="MH")
 
 city = City.objects.create(name="Pune", state=state)
 locality = Locality.objects.create(city=city, name="Kondhwa", postal_code="411048")
+sub_locality = SubLocality.objects.create(locality=locality, name="Mitha Nagar")
+
 
 category = Category.objects.create(name="IT", popularity="HI")
 

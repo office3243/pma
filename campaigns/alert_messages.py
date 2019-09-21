@@ -1,0 +1,3 @@
+#   ADMIN MESSAGES
+
+CAMPAIGN_CREATED_MESSAGE = "Campaign created"

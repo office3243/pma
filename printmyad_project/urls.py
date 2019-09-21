@@ -10,4 +10,7 @@ urlpatterns = [
     url(r'^localities/', include("localities.urls", namespace="localities")),
     url(r'^industries/', include("industries.urls", namespace="industries")),
     url(r'^payments/', include("payments.urls", namespace="payments")),
+    url(r'^stations/', include("stations.urls", namespace="stations")),
+    # url(r'^dealers/', include("dealers.urls", namespace="dealers")),
+
 ]

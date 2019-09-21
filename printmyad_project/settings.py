@@ -23,6 +23,9 @@ INSTALLED_APPS = [
     "industries",
     "localities",
     "payments",
+    "stations",
+    "dealers",
+    "rates",
 ]
 
 MIDDLEWARE = [
@@ -95,13 +98,46 @@ USE_L10N = True
 USE_TZ = False
 
 
-STATIC_URL = '/static/'
-
 
 #   CUSTOM SETTINGS
+
+STATIC_URL = '/static/'
+
+STATIC_ROOR = os.path.join(BASE_DIR, "static")
+
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+
 from django.urls import reverse_lazy
 
 LOGIN_URL = reverse_lazy("accounts:login")
 LOGIN_REDIRECT_URL = reverse_lazy("portal:home")
 CRISPY_TEMPLATE_PACK = "bootstrap4"
 SITE_DOMAIN = "http://127.0.0.1:8000"
+API_KEY_2FA = "c9ef2a2e-806a-11e9-ade6-0200cd936042"
+
+
+#   PAYTM LIVE
+# PAYTM_MERCHANT_KEY = "xt94GuDiIMz_#84O"
+# PAYTM_MERCHANT_ID = "ZIHCDc43188965988448"
+PAYTM_WEBSITE = 'DEFAULT'
+PAYTM_CALLBACK_URL = SITE_DOMAIN + "/payments/paytm/response/"
+
+#   PAYTM TEST
+
+PAYTM_MERCHANT_KEY = "mhTAUyOuhW752G_q"
+PAYTM_MERCHANT_ID = "VgBKhn41304614600778"
+
+#   EMAIL CREDENTIALS
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = "webprintmyad@gmail.com"
+EMAIL_HOST_PASSWORD = "Admin@2018#"
+
+ADMIN_EMAIL = "office3243@gmail.com"
+EMAIL_FROM = EMAIL_HOST_USER

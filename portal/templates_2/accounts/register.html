@@ -1,0 +1,19 @@
+{% extends 'accounts/base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Register{% endblock %}
+{% block content %}
+        <br><br>
+        <div class="jumbotron bg-default container">
+            <h3 class="text-center">Register</h3>
+            <div class="tab-content container mt-3" id="tz-tab-content">
+                <div id="sign-up-section">
+                    <form method="POST">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <button class="btn btn-info btn-block my-4 tz-btn-submit" type="submit">Register</button>
+                    </form>
+                </div>
+                <span class="font-weight-bold">Already have an account <a href="{% url "accounts:login" %}">Login</a></span>
+            </div>
+        </div>
+{% endblock %}

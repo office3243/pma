@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+</head>
+
+<body>
+
+<form enctype="multipart/form-data" action="{% url "campaigns:blob_test" %}" method="post" id="myForm">
+
+    <input name="files[]" type="file" id="fileInput">
+
+    <button type="submit">Submit</button>
+
+</form>
+
+<button id="jsSave">JS SAVE</button>
+
+
+  <script>
+
+    const form = document.getElementById("myForm");
+    const data = [
+      new File(["a"], "a.pdf"),
+    ];
+    let saveBtn = document.getElementById("jsSave");
+    let input = document.getElementById("fileInput");
+    class _DataTransfer {
+      constructor() {
+        return new ClipboardEvent("").clipboardData || new DataTransfer();
+      }
+    }
+    saveBtn.onclick = e => {
+      const dt = new _DataTransfer();
+      for (let file of data) {
+        dt.items.add(file)
+      }
+      if (dt.files.length) {
+        input.files = dt.files;
+      }
+      const fd = new FormData(form);
+     };
+
+  </script>
+</body>
+
+</html>

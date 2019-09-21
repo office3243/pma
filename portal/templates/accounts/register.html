@@ -2,18 +2,34 @@
 {% load crispy_forms_tags %}
 {% block title %}Register{% endblock %}
 {% block content %}
-        <br><br>
-        <div class="jumbotron bg-default container">
-            <h3 class="text-center">Register</h3>
-            <div class="tab-content container mt-3" id="tz-tab-content">
-                <div id="sign-up-section">
-                    <form method="POST">
-                        {% csrf_token %}
-                        {{ form|crispy }}
-                        <button class="btn btn-info btn-block my-4 tz-btn-submit" type="submit">Register</button>
-                    </form>
+    <div class="container">
+        <div class="tz-signin">
+            <h2 class="h2 font-weight-normal text-primary mt-4 mb-3" style="font-size:30px">Create New Account</h2>
+            <form action="{% url "accounts:register" %}" method="post">
+                {% csrf_token %}
+                <div class="form-label-group mb-3">
+                    <input id="signUpMobileNo" class="form-control" type="text" name="phone" placeholder="Phone" required autofocus>
                 </div>
-                <span class="font-weight-bold">Already have an account <a href="{% url "accounts:login" %}">Login</a></span>
-            </div>
+                <div class="form-label-group mb-3">
+                    <input id="signUpEmail" class="form-control" type="email" name="email"  placeholder="Email Address" required autofocus>
+                </div>
+                <div class="form-label-group mb-4">
+                    <input id="signUpZipCode" class="form-control" type="text" name="zip_code" placeholder="Enter Zipcode" required>
+                </div>
+                <div class="form-label-group mb-3">
+                    <input id="signUpPassword" class="form-control" type="password" name="password1" placeholder="Password" required>
+                </div>
+                <div class="form-label-group mb-3">
+                    <input id="signUpRePassword" class="form-control" type="password" name="password2" placeholder="Re-enter Password" required>
+                </div>
+
+                <div>
+                    <button class="form-control btn-primary" type="submit">Create Account</button>
+                </div>
+                <div  class="text-center mt-4">
+                    <a class="btn-link" href="{% url "accounts:login" %}">Log In</a>
+                </div>
+            </form>
         </div>
+    </div>
 {% endblock %}

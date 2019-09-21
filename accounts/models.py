@@ -19,7 +19,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     business_name = models.CharField(_("business_name"), max_length=64, blank=True)
     city = models.CharField(_('city'), max_length=30, blank=True, default="Pune")
     date_joined = models.DateTimeField(_('date joined'), auto_now_add=True)
-    is_active = models.BooleanField(_('active'), default=True)
+    is_active = models.BooleanField(_('active'), default=False)
 
     is_staff = models.BooleanField(_('staff'), default=False)
     is_superuser = models.BooleanField(_('superuser'), default=False)
@@ -43,7 +43,9 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     @property
     def get_display_text(self):
-        return self.__str__()
+        full_name = self.get_full_name
+
+        return full_name if full_name != "" else self.phone
 
     @property
     def get_first_name(self):

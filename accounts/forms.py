@@ -6,8 +6,6 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.core.exceptions import ValidationError
 from django.contrib.auth.forms import password_validation
 
-USER_MODEL = User
-
 
 class CustomLoginForm(AuthenticationForm):
     username = forms.CharField(max_length=13, widget=forms.TextInput(attrs={"class": "input-medium bfh-phone", "data-format": "+91dddddddddd"}))
@@ -67,5 +65,5 @@ class OTPForm(forms.Form):
 class ProfileUpdateForm(forms.ModelForm):
 
     class Meta:
-        model = USER_MODEL
-        fields = ('first_name', 'last_name', 'email', 'city', )
+        model = User
+        fields = ('first_name', 'last_name', 'email', 'city', "business_name")

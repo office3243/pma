@@ -6,4 +6,4 @@ class CampaignAddForm(forms.ModelForm):
 
     class Meta:
         model = Campaign
-        fields = ("name", "size", "footer_file", "sub_industry", "locality", "quantity")
+        fields = ("name", "size", "footer_file", "sub_industry", "sub_locality", "quantity")
